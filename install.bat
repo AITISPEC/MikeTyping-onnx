@@ -18,7 +18,7 @@ if errorlevel 1 (
 :: Создание виртуального окружения
 if not exist ".venv" (
     echo Создание виртуального окружения...
-    python -m venv venv
+    python -m venv .venv
     if errorlevel 1 (
         echo Не удалось создать venv.
         pause
@@ -30,9 +30,9 @@ if not exist ".venv" (
 
 :: Активация venv и установка зависимостей
 echo Активация окружения и установка пакетов...
-call .venv\Scripts\activate.bat
-pip install --upgrade pip
-pip install -r requirements.txt
+call .venv/Scripts/activate.bat
+call python -m pip install --upgrade pip
+call pip install -r requirements.txt
 
 if errorlevel 1 (
     echo Ошибка при установке зависимостей.

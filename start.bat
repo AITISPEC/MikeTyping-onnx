@@ -19,4 +19,3 @@ if errorlevel 1 (
     taskkill /F /IM pythonw.exe >nul
     echo Application stopped.
 )
-pause
