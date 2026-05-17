@@ -1,0 +1,9 @@
+sherpa-onnx
+sounddevice
+pyperclip
+pynput
+numpy
+scipy
+colorama
+noisereduce
+onnxruntime
