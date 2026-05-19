@@ -4,3 +4,7 @@ __pycache__/
 logs/
 models/*
 !models/.gitkeep
+venv.ps1
+ruff.ps1
+dump_for_ai.py
+.ruff_cache/

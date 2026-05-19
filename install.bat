@@ -7,13 +7,31 @@ echo   MikeTyping-onnx - установка окружения
 echo ============================================
 echo.
 
-:: Проверка наличия Python
-python --version >nul 2>&1
-if errorlevel 1 (
-    echo [ОШИБКА] Python не найден. Установите Python 3.12+ и добавьте в PATH.
-    pause
-    exit /b 1
+:: Проверка версии Python
+for /f "tokens=2" %%v in ('python --version 2^>^&1') do set pyver=%%v
+for /f "tokens=1,2 delims=." %%a in ("%pyver%") do (
+    set py_major=%%a
+    set py_minor=%%b
 )
+if %py_major% LSS 3 (
+    goto py_error
+)
+if %py_major% EQU 3 if %py_minor% LSS 12 (
+    goto py_error
+)
+goto py_ok
+
+:py_error
+echo [ОШИБКА] Требуется Python 3.12 или выше.
+echo Установите Python:
+echo   - Скачать с официального сайта: https://www.python.org/downloads/
+echo   - Или из Microsoft Store: https://apps.microsoft.com/detail/9ncvdn91xzqp
+echo Важно: при установке отметьте "Add Python to PATH"
+pause
+exit /b 1
+
+:py_ok
+echo Python %pyver% обнаружен (OK)
 
 :: Создание виртуального окружения
 if not exist ".venv" (
@@ -33,6 +51,8 @@ echo Активация окружения и установка пакетов.
 call .venv/Scripts/activate.bat
 call python -m pip install --upgrade pip
 call pip install -r requirements.txt
+call pip uninstall pymorphy2 -y
+call pip uninstall pymorphy2-dicts-ru -y
 
 if errorlevel 1 (
     echo Ошибка при установке зависимостей.

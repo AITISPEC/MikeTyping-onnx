@@ -5,5 +5,6 @@ pynput
 numpy
 scipy
 colorama
-noisereduce
 onnxruntime
+pymorphy3
+natasha
