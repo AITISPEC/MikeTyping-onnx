@@ -33,6 +33,7 @@ ZIPFORMER_DECODING_METHOD = "greedy_search"
 # ========== ВЫВОД ТЕКСТА ==========
 AUTO_SPACE = True
 PASTE_DELAY = 0.05
+FINALIZATION_WAIT_MS = 100
 
 # ========== HOTWORDS (контекстное усиление) ==========
 USE_HOTWORDS = True
@@ -45,8 +46,8 @@ USE_TEXT_POSTPROCESSING = True  # включает лемматизацию, к�
 
 # ========== ГОРЯЧАЯ КЛАВИША ==========
 HOTKEY = pynput_keyboard.Key.scroll_lock
-HOTKEY_DEBOUNCE_MS = 300
+HOTKEY_DEBOUNCE_MS = 500
 AUTO_SWITCH_BY_KEYBOARD_LAYOUT = True
 
-DEBUG = False
+DEBUG = True
 LOGS_DIR = BASE_DIR / "logs"
