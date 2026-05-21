@@ -7,4 +7,5 @@ models/*
 venv.ps1
 ruff.ps1
 dump_for_ai.py
+dump_for_ai.bat
 .ruff_cache/
